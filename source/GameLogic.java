@@ -1,8 +1,8 @@
 package tictactoe;
 
-public class GameLogic {
-      MainApplet m;
-      GameLogic(MainApplet m , int turn) {
+class GameLogic {
+      private MainApplet m;
+      GameLogic(MainApplet m) {
             this.m = m;
       }
       boolean isGameOver(int turn) {
@@ -11,35 +11,22 @@ public class GameLogic {
                   return false;
             }
             else {
-                  //Check Rows
-
-                  //Checking Row1
-                  if(m.shape[0] == m.shape[1] && m.shape[0] == m.shape[2])
-                        return true;
-                  //Checking Row2
-                  else if(m.shape[3] == m.shape[4] && m.shape[3] == m.shape[5])
-                        return true;
-                  //Checking Row3
-                  else if(m.shape[6] == m.shape[7] && m.shape[6] == m.shape[8])
-                        return true;
+                  //Checking Rows
+                  for(int i=0 ; i<3 ; i++) {
+                        if(m.shape[i][0] == m.shape[i][1] && m.shape[i][0] == m.shape[i][2])
+                              return true;
+                  }
 
                   //Checking Columns
-
-                  //Checking Column1
-                  else if(m.shape[0] == m.shape[3] && m.shape[0] == m.shape[6])
-                        return true;
-                  //Checking Column2
-                  else if(m.shape[1] == m.shape[4] && m.shape[1] == m.shape[7])
-                        return true;
-                  //Checking Column3
-                  else if(m.shape[2] == m.shape[5] && m.shape[2] == m.shape[8])
-                        return true;
+                  for(int j=0 ; j<3 ; j++) {
+                        if(m.shape[0][j] == m.shape[1][j] && m.shape[0][j] == m.shape[2][j])
+                              return true;
+                  }
 
                   //Checking Diagonals
-
-                  else if(m.shape[0] == m.shape[4] && m.shape[0] == m.shape[8])
+                  if(m.shape[0][0] == m.shape[1][1] && m.shape[0][0] == m.shape[2][2])
                         return true;
-                  else if(m.shape[2] == m.shape[4] && m.shape[2] == m.shape[6])
+                  else if(m.shape[0][2] == m.shape[1][1] && m.shape[0][2] == m.shape[2][0])
                         return true;
 
                   //Return false if all condition fails.
